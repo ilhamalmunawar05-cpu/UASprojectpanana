@@ -1,0 +1,122 @@
+
+[1m[0;36m══════════════════════════════════════[0m
+[1m[0;36m Pre-flight Check[0m
+[1m[0;36m══════════════════════════════════════[0m
+[0;32m[OK][0m   GitHub CLI tersedia dan sudah login
+[0;34m[INFO][0m Target repo : ilhamalmunawar05-cpu/UASprojectpanana
+
+[1m[0;36m══════════════════════════════════════[0m
+[1m[0;36m 1/5  Membuat Labels[0m
+[1m[0;36m══════════════════════════════════════[0m
+[1;33m[SKIP][0m Label 'feature' sudah ada — diskip
+[1;33m[SKIP][0m Label 'bug' sudah ada — diskip
+[1;33m[SKIP][0m Label 'enhancement' sudah ada — diskip
+[1;33m[SKIP][0m Label 'documentation' sudah ada — diskip
+[1;33m[SKIP][0m Label 'testing' sudah ada — diskip
+[1;33m[SKIP][0m Label 'database' sudah ada — diskip
+[1;33m[SKIP][0m Label 'security' sudah ada — diskip
+[1;33m[SKIP][0m Label 'ui-ux' sudah ada — diskip
+[1;33m[SKIP][0m Label 'api' sudah ada — diskip
+[1;33m[SKIP][0m Label 'priority: high' sudah ada — diskip
+[1;33m[SKIP][0m Label 'priority: medium' sudah ada — diskip
+[1;33m[SKIP][0m Label 'priority: low' sudah ada — diskip
+[1;33m[SKIP][0m Label 'status: in-progress' sudah ada — diskip
+[1;33m[SKIP][0m Label 'status: review' sudah ada — diskip
+[1;33m[SKIP][0m Label 'status: blocked' sudah ada — diskip
+[1;33m[SKIP][0m Label 'status: done' sudah ada — diskip
+[1;33m[SKIP][0m Label 'backend' sudah ada — diskip
+[1;33m[SKIP][0m Label 'frontend' sudah ada — diskip
+[1;33m[SKIP][0m Label 'fullstack' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: auth' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: opac' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: sirkulasi' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: denda' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: anggota' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: buku' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: eresource' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: laporan' sudah ada — diskip
+[1;33m[SKIP][0m Label 'modul: dashboard' sudah ada — diskip
+
+[1m[0;36m══════════════════════════════════════[0m
+[1m[0;36m 2/5  Membuat Milestones[0m
+[1m[0;36m══════════════════════════════════════[0m
+[1;33m[SKIP][0m Milestone 'M1: Analysis & Design' sudah ada — diskip
+[1;33m[SKIP][0m Milestone 'M2: Development - Core' sudah ada — diskip
+[1;33m[SKIP][0m Milestone 'M3: Development - Fitur Utama' sudah ada — diskip
+[1;33m[SKIP][0m Milestone 'M4: Development - Dashboard & Laporan' sudah ada — diskip
+[1;33m[SKIP][0m Milestone 'M5: Testing & QA' sudah ada — diskip
+[1;33m[SKIP][0m Milestone 'M6: Deployment & Training' sudah ada — diskip
+[0;34m[INFO][0m Verifikasi milestone numbers dari API...
+[0;32m[OK][0m     'M1: Analysis & Design' → #6
+[0;32m[OK][0m     'M2: Development - Core' → #4
+[0;32m[OK][0m     'M3: Development - Fitur Utama' → #5
+[0;32m[OK][0m     'M4: Development - Dashboard & Laporan' → #2
+[0;32m[OK][0m     'M5: Testing & QA' → #1
+[0;32m[OK][0m     'M6: Deployment & Training' → #3
+
+[1m[0;36m══════════════════════════════════════[0m
+[1m[0;36m 3/5  Membuat Issues[0m
+[1m[0;36m══════════════════════════════════════[0m
+[0;31m[ERR][0m  Gagal membuat issue: [DOCS] Finalisasi SRS v2.0 & persetujuan stakeholder
+[0;31m[ERR][0m  Gagal membuat issue: [DOCS] Finalisasi ERD & LRS Database SIPERPUS
+[0;31m[ERR][0m  Gagal membuat issue: [DOCS] Buat UI/UX Mockup semua halaman SIPERPUS
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Setup Project Laravel & Konfigurasi Database
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Migrasi & Seeder Database Lengkap
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Autentikasi & RBAC (UC-001 s/d UC-004)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] CRUD Manajemen Anggota Perpustakaan (UC-005)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] CRUD Manajemen Buku & Kategori (UC-006 & UC-007)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Implementasi Layout Admin: Sidebar, Navbar, Theme Navy Blue
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman Login, Logout & Reset Password (UC-001 s/d UC-003)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman Dashboard Admin (Statistik & Quick Links)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman CRUD Manajemen Anggota (UC-005)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman CRUD Manajemen Buku & Kategori (UC-006 & UC-007)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Modul OPAC - Pencarian Katalog Publik (UC-008 & UC-009)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Modul Sirkulasi: Peminjaman & Pengembalian (UC-010 s/d UC-013)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Modul E-Resources (UC-016 & UC-017)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman OPAC - Interface Pencarian Publik (UC-008 & UC-009)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman Sirkulasi: Form Peminjaman & Pengembalian (UC-010 s/d UC-012)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman E-Resources: Upload & Manajemen Konten Digital
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman Manajemen User (Super Admin Only)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Modul Laporan & Export PDF/Excel (UC-018)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Implementasi Dashboard API & Audit Log (UC-019)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Halaman Laporan & Export PDF/Excel (UC-018)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Unit Testing & Integration Testing (Coverage >= 80%)
+[0;31m[ERR][0m  Gagal membuat issue: [FE] Cross-Browser Testing & Responsive Testing
+[0;31m[ERR][0m  Gagal membuat issue: [FULLSTACK] Security Testing: OWASP Top 10 Check
+[0;31m[ERR][0m  Gagal membuat issue: [FULLSTACK] User Acceptance Testing (UAT) dengan Stakeholder
+[0;31m[ERR][0m  Gagal membuat issue: [FULLSTACK] Performance & Load Testing (50 Concurrent Users)
+[0;31m[ERR][0m  Gagal membuat issue: [BE] Setup Production Environment & Deployment
+[0;31m[ERR][0m  Gagal membuat issue: [DOCS] Dokumentasi Teknis: API Docs & README Lengkap
+[0;31m[ERR][0m  Gagal membuat issue: [FULLSTACK] Finalisasi & Go-Live Checklist
+
+[1m[0;36m══════════════════════════════════════[0m
+[1m[0;36m 4/5  Membuat GitHub Project Board[0m
+[1m[0;36m══════════════════════════════════════[0m
+[1;33m[SKIP][0m Project board tidak bisa dibuat via CLI.
+[1;33m[SKIP][0m Buat manual di: https://github.com/users/ilhamalmunawar05-cpu/projects/new
+
+[1m[0;36m══════════════════════════════════════[0m
+[1m[0;36m 5/5  Selesai![0m
+[1m[0;36m══════════════════════════════════════[0m
+
+[0;32m[1mSetup GitHub SIPERPUS selesai![0m
+
+[1mYang sudah dibuat:[0m
+  [0;36mLabels    [0m: 28 labels
+  [0;36mMilestones[0m: 6 milestones (M1 s/d M6)
+  [0;36mIssues    [0m: 26 issues
+
+[1mDistribusi Tim:[0m
+  [0;32mBackend  (fajar1180)          [0m: ~14 issues
+  [0;34mFrontend (ilhamalmunawar05-cpu)[0m: ~12 issues
+
+[1mLinks:[0m
+  Repo      : https://github.com/ilhamalmunawar05-cpu/UASprojectpanana
+  Issues    : https://github.com/ilhamalmunawar05-cpu/UASprojectpanana/issues
+  Milestones: https://github.com/ilhamalmunawar05-cpu/UASprojectpanana/milestones
+  Projects  : https://github.com/ilhamalmunawar05-cpu?tab=projects
+
+[1;33mTips selanjutnya:[0m
+  1. Buka Project Board, tambah kolom: Backlog | In Progress | Review | Done
+  2. Set branch protection rule untuk 'main'
+  3. Naming branch: feature/BE-xxx-nama atau feature/FE-xxx-nama
