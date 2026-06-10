@@ -1,0 +1,13 @@
+{
+    "user": {
+        "id": 20,
+        "name": "Dev Tester",
+        "email": "dev+test@example.com",
+        "role": "super-admin",
+        "email_verified_at": null,
+        "created_at": "2026-01-04T19:19:11.000000Z",
+        "updated_at": "2026-01-04T19:19:11.000000Z"
+    },
+    "article": null,
+    "errors": []
+}
