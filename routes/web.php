@@ -49,6 +49,10 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 // Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Static Bookmaster Pages
+Route::view('/pages/generic', 'bookmaster.generic')->name('pages.generic');
+Route::view('/pages/elements', 'bookmaster.elements')->name('pages.elements');
+
 // Modul A: Galeri Virtual (Katalog Karya Seni)
 Route::get('/artwork', [ArtworkController::class, 'index'])->name('gallery.index');
 Route::get('/artwork/{id}', [ArtworkController::class, 'show'])->name('gallery.show');
@@ -214,8 +218,3 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-// Simple route to preview the integrated `book-master` frontend template
-Route::get('/bookmaster', function () {
-    return view('bookmaster');
-})->name('bookmaster');
