@@ -20,6 +20,7 @@ use App\Http\Controllers\Public\AuctionController;
 use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\GuestbookController;
 use App\Http\Controllers\Public\MuseumController;
+use App\Http\Controllers\Public\OpacController;
 
 // ============================================================================
 // IMPORT CONTROLLERS - ADMIN
@@ -48,6 +49,9 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// OPAC - Public Catalog Search
+Route::get('/opac', [OpacController::class, 'index'])->name('opac.index');
 
 // Static Bookmaster Pages
 Route::view('/pages/generic', 'bookmaster.generic')->name('pages.generic');
