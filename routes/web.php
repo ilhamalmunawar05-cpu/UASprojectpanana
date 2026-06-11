@@ -214,3 +214,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Simple route to preview the integrated `book-master` frontend template
+Route::get('/bookmaster', function () {
+    return view('bookmaster');
+})->name('bookmaster');
