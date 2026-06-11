@@ -216,8 +216,11 @@ Route::get('/home', function () {
 
 // User dashboard (authenticated users)
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\LoanController as UserLoanController;
 
 Route::middleware('auth')->get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+Route::middleware('auth')->get('/user/loans', [UserLoanController::class, 'index'])->name('user.loans');
+Route::middleware('auth')->post('/user/loans', [UserLoanController::class, 'store'])->name('user.loans.store');
 
 // Profile routes (used by feature tests)
 Route::middleware('auth')->group(function () {
