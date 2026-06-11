@@ -53,6 +53,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // OPAC - Public Catalog Search
 Route::get('/opac', [OpacController::class, 'index'])->name('opac.index');
 
+// OPAC detail
+Route::get('/opac/{book}', [OpacController::class, 'show'])->name('opac.show');
+
 // Static Bookmaster Pages
 Route::view('/pages/generic', 'bookmaster.generic')->name('pages.generic');
 Route::view('/pages/elements', 'bookmaster.elements')->name('pages.elements');

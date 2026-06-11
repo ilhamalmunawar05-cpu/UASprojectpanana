@@ -24,4 +24,9 @@ class OpacController extends Controller
 
         return view('opac.index', compact('books', 'q'));
     }
+
+    public function show(Book $book)
+    {
+        return view('opac.show', compact('book'));
+    }
 }

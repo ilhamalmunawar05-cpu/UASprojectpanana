@@ -24,7 +24,7 @@
                                     <h5 class="card-title">{{ $book->title }}</h5>
                                     <p class="card-text text-muted">{{ $book->author }}</p>
                                     <p class="small text-muted">ISBN: {{ $book->isbn ?? '-' }}</p>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
+                                    <a href="{{ route('opac.show', $book->id) }}" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
                                 </div>
                             </div>
                         </div>
