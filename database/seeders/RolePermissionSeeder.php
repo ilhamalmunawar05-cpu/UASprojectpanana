@@ -15,7 +15,7 @@ class RolePermissionSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Buat Permissions
+        // Buat Permissions untuk modul galeri dan perpustakaan
         $permissions = [
             'manage artworks',
             'manage artists',
@@ -25,6 +25,10 @@ class RolePermissionSeeder extends Seeder
             'manage comments',
             'manage collections',
             'manage users',
+            'manage books',
+            'manage members',
+            'manage loans',
+            'manage eresources',
             'view public content',
         ];
 
@@ -44,8 +48,10 @@ class RolePermissionSeeder extends Seeder
             'manage auctions',
             'manage articles',
             'manage collections',
-            // Catatan: staff-admin TIDAK punya permission 'manage users'
-            // Hanya super-admin yang bisa mengelola user
+            'manage books',
+            'manage members',
+            'manage loans',
+            'manage eresources',
         ]);
 
         $publicRole = Role::firstOrCreate(['name' => 'public']);
@@ -61,11 +67,11 @@ class RolePermissionSeeder extends Seeder
         // Buat User Staff
         $staff = User::firstOrCreate(
             ['email' => 'staff@gallery.com'],
-            ['name' => 'Staff Gallery', 'password' => Hash::make('password123')]
+            ['name' => 'Staff Admin', 'password' => Hash::make('password123')]
         );
         $staff->syncRoles(['staff-admin']);
 
-        // Buat User Public
+        // Buat User Publik
         $public = User::firstOrCreate(
             ['email' => 'user@example.com'],
             ['name' => 'Pengunjung', 'password' => Hash::make('password123')]

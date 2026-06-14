@@ -52,7 +52,7 @@
         <!-- Sidebar -->
         <div class="sidebar text-white p-0" style="width: 250px;">
             <div class="p-3 border-bottom border-secondary">
-                <h4 class="mb-0"><i class="fas fa-palette"></i> Gallery Admin</h4>
+                <h4 class="mb-0"><i class="fas fa-book"></i> Si-Perpus</h4>
             </div>
             <nav class="nav flex-column mt-3">
                 <a class="nav-link {{ request()->is('admin/dashboard*') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">

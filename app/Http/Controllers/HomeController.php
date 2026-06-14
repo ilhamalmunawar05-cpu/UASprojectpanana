@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home'); // atau view('welcome') tergantung nama file view kamu
+        return view('bookmaster.index');
     }
 }
