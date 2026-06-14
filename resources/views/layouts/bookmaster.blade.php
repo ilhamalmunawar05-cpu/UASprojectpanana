@@ -8,7 +8,7 @@
     <!-- Author Meta -->
     <meta name="author" content="SIPERPUS">
     <!-- Meta Description -->
-    <meta name="description" content="@yield('meta_description', 'SIPERPUS - Museum Information System')">
+    <meta name="description" content="@yield('meta_description', 'SIPERPUS - Sistem Informasi Perpustakaan')">
     <!-- Meta Keyword -->
     <meta name="keywords" content="@yield('meta_keywords', '')">
     <!-- Meta Character Set -->
@@ -104,7 +104,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <h4>About SIPERPUS</h4>
-                    <p>SIPERPUS adalah sistem informasi terintegrasi untuk mengelola museum dan perpustakaan digital.</p>
+                    <p>SIPERPUS adalah sistem informasi terintegrasi untuk mengelola perpustakaan dan koleksi digital.</p>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <h4>Newsletter</h4>

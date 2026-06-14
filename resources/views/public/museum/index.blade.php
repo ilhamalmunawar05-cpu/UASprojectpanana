@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koleksi Museum</title>
+    <title>Koleksi Perpustakaan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -40,8 +40,8 @@
     <div class="container">
         <div class="card mb-4">
             <div class="card-body text-center py-5">
-                <h1 class="display-4"><i class="fas fa-landmark"></i> Koleksi Museum & Arsip</h1>
-                <p class="lead text-muted">Jelajahi arsip bersejarah dan koleksi museum</p>
+                <h1 class="display-4"><i class="fas fa-landmark"></i> Koleksi Perpustakaan & Arsip</h1>
+                <p class="lead text-muted">Jelajahi arsip bersejarah dan koleksi perpustakaan</p>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
             <div class="card">
                 <div class="card-body text-center py-5">
                     <i class="fas fa-info-circle fa-4x mb-3" style="color: #d299c2;"></i>
-                    <h3>Belum Ada Koleksi Museum</h3>
+                    <h3>Belum Ada Koleksi Perpustakaan</h3>
                     <p class="text-muted">Koleksi arsip sedang dalam proses digitalisasi.</p>
                     <a href="{{ route('home') }}" class="btn btn-primary">Kembali ke Home</a>
                 </div>

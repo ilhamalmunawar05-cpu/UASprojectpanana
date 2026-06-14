@@ -1,7 +1,7 @@
 @extends('layouts.bookmaster')
 
 @section('title', 'Home - SIPERPUS')
-@section('meta_description', 'SIPERPUS - Museum Information System Portal')
+@section('meta_description', 'SIPERPUS - Sistem Informasi Perpustakaan Portal')
 
 @section('content')
 <!-- start banner Area -->
@@ -44,7 +44,7 @@
                 <div class="info-content">
                     <h2 class="pb-30">Tentang SIPERPUS</h2>
                     <p>
-                        SIPERPUS adalah solusi terintegrasi untuk mengelola perpustakaan digital, koleksi museum, dan informasi pameran seni dengan mudah dan efisien.
+                        SIPERPUS adalah solusi terintegrasi untuk mengelola perpustakaan digital, koleksi perpustakaan, dan informasi pameran seni dengan mudah dan efisien.
                     </p>
                     <br>
                     <p>
@@ -115,7 +115,7 @@
             <div class="menu-content pb-60 col-lg-8">
                 <div class="title text-center">
                     <h1 class="mb-10">Modul Sistem</h1>
-                    <p>Berbagai modul tersedia untuk mengelola perpustakaan dan museum</p>
+                    <p>Berbagai modul tersedia untuk mengelola perpustakaan dan koleksi</p>
                 </div>
             </div>
         </div>						
@@ -183,15 +183,15 @@
                 <div class="single-testimonial item">
                     <img class="mx-auto" src="{{ asset('bookmaster/img/t1.png') }}" alt="">
                     <p class="desc">
-                        Sistem SIPERPUS sangat membantu dalam mengelola koleksi museum kami. Interface yang user-friendly membuat pekerjaan semakin efisien.
+                        Sistem SIPERPUS sangat membantu dalam mengelola koleksi perpustakaan kami. Interface yang user-friendly membuat pekerjaan semakin efisien.
                     </p>
-                    <h4>Admin Museum</h4>
-                    <p>Museum Nasional</p>
+                    <h4>Admin Perpustakaan</h4>
+                    <p>Perpustakaan Nasional</p>
                 </div>
                 <div class="single-testimonial item">
                     <img class="mx-auto" src="{{ asset('bookmaster/img/t2.png') }}" alt="">
                     <p class="desc">
-                        Fitur pencarian dan manajemen pameran membuat pekerjaan kurator menjadi lebih mudah. Rekomendasi implementasi SIPERPUS untuk semua museum.
+                        Fitur pencarian dan manajemen pameran membuat pekerjaan kurator menjadi lebih mudah. Rekomendasi implementasi SIPERPUS untuk semua perpustakaan.
                     </p>
                     <h4>Kurator Seni</h4>
                     <p>Galeri Seni Kontemporer</p>
@@ -201,7 +201,7 @@
                     <p class="desc">
                         Sebagai pengguna publik, saya sangat senang dengan kemudahan akses informasi koleksi dan pameran melalui portal online SIPERPUS.
                     </p>
-                    <h4>Pengunjung Museum</h4>
+                    <h4>Pengunjung Perpustakaan</h4>
                     <p>Pecinta Seni</p>
                 </div>	
             </div>

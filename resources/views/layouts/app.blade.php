@@ -85,7 +85,7 @@
 
                 @can('manage collections')
                     <a class="nav-link {{ request()->is('admin/collections*') ? 'active' : '' }}" href="{{ route('admin.collections.index') }}">
-                        <i class="fas fa-archive"></i> Koleksi Museum
+                        <i class="fas fa-archive"></i> Koleksi Perpustakaan
                     </a>
                 @endcan
 
