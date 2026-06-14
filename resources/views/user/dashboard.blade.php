@@ -46,7 +46,7 @@
                     </div>
                     <h5 class="card-title">OPAC - Cari Buku</h5>
                     <p class="card-text text-muted">Cari dan temukan buku yang Anda butuhkan dari koleksi perpustakaan.</p>
-                    <a href="{{ route('opac.index') }}" class="btn btn-primary">
+                    <a href="{{ Route::has('opac.index') ? route('opac.index') : '#' }}" class="btn btn-primary">
                         <i class="fas fa-arrow-right"></i> Cari Buku
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                     </div>
                     <h5 class="card-title">Peminjaman Saya</h5>
                     <p class="card-text text-muted">Lihat buku yang sedang Anda pinjam dan riwayat peminjaman.</p>
-                    <a href="{{ route('user.loans') }}" class="btn btn-success">
+                    <a href="{{ Route::has('user.loans') ? route('user.loans') : '#' }}" class="btn btn-success">
                         <i class="fas fa-arrow-right"></i> Lihat Peminjaman
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                     </div>
                     <h5 class="card-title">Profil Saya</h5>
                     <p class="card-text text-muted">Kelola informasi pribadi dan data keanggotaan perpustakaan.</p>
-                    <a href="{{ route('user.profile') }}" class="btn btn-info text-white">
+                    <a href="{{ Route::has('user.profile') ? route('user.profile') : (Route::has('profile.edit') ? route('profile.edit') : '#') }}" class="btn btn-info text-white">
                         <i class="fas fa-arrow-right"></i> Edit Profil
                     </a>
                 </div>
@@ -150,7 +150,7 @@
                     </div>
                     <h5>E-Resources</h5>
                     <p class="text-muted">Akses koleksi e-book, jurnal, dan materi digital lainnya secara gratis.</p>
-                    <a href="{{ route('eresources.public') }}" class="btn btn-outline-primary">
+                    <a href="{{ Route::has('eresources.public') ? route('eresources.public') : (Route::has('admin.eresources.index') ? route('admin.eresources.index') : '#') }}" class="btn btn-outline-primary">
                         <i class="fas fa-arrow-right"></i> Lihat E-Resources
                     </a>
                 </div>
@@ -164,7 +164,7 @@
                     </div>
                     <h5>Jadwal Layanan</h5>
                     <p class="text-muted">Informasi jadwal operasional perpustakaan dan layanan yang tersedia.</p>
-                    <a href="{{ route('services.schedule') }}" class="btn btn-outline-success">
+                    <a href="{{ Route::has('services.schedule') ? route('services.schedule') : '#' }}" class="btn btn-outline-success">
                         <i class="fas fa-arrow-right"></i> Lihat Jadwal
                     </a>
                 </div>
@@ -178,49 +178,8 @@
                     </div>
                     <h5>Bantuan & FAQ</h5>
                     <p class="text-muted">Temukan jawaban atas pertanyaan umum tentang layanan perpustakaan.</p>
-                    <a href="{{ route('help.faq') }}" class="btn btn-outline-info">
+                    <a href="{{ Route::has('help.faq') ? route('help.faq') : '#' }}" class="btn btn-outline-info">
                         <i class="fas fa-arrow-right"></i> Lihat FAQ
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-                        <div class="col-4">
-                            <h3 class="text-success">{{ \App\Models\Artist::count() }}</h3>
-                            <small class="text-muted">Seniman</small>
-                        </div>
-                        <div class="col-4">
-                            <h3 class="text-warning">{{ \App\Models\Auction::where('status', 'active')->count() }}</h3>
-                            <small class="text-muted">Lelang Aktif</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0"><i class="fas fa-user-circle"></i> Profil Saya</h5>
-                </div>
-                <div class="card-body">
-                    <table class="table table-borderless mb-0">
-                        <tr>
-                            <td><strong>Nama:</strong></td>
-                            <td>{{ auth()->user()->name }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Email:</strong></td>
-                            <td>{{ auth()->user()->email }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Bergabung:</strong></td>
-                            <td>{{ auth()->user()->created_at->format('d F Y') }}</td>
-                        </tr>
-                    </table>
-                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-success btn-sm mt-2">
-                        <i class="fas fa-edit"></i> Edit Profil
                     </a>
                 </div>
             </div>

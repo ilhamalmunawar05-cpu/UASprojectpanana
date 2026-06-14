@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header d-flex justify-content-between">
-        <h4><i class="fas fa-info-circle"></i> Detail Koleksi Museum</h4>
+        <h4><i class="fas fa-info-circle"></i> Detail Koleksi Perpustakaan</h4>
         <div>
             <a href="{{ route('admin.collections.edit', $collection) }}" class="btn btn-warning">
                 <i class="fas fa-edit"></i> Edit

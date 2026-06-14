@@ -20,6 +20,7 @@ use App\Http\Controllers\Public\AuctionController;
 use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\GuestbookController;
 use App\Http\Controllers\Public\MuseumController;
+use App\Http\Controllers\Public\OpacController;
 
 // ============================================================================
 // IMPORT CONTROLLERS - ADMIN
@@ -48,6 +49,16 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 // Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// OPAC - Public Catalog Search
+Route::get('/opac', [OpacController::class, 'index'])->name('opac.index');
+
+// OPAC detail
+Route::get('/opac/{book}', [OpacController::class, 'show'])->name('opac.show');
+
+// Static Bookmaster Pages
+Route::view('/pages/generic', 'bookmaster.generic')->name('pages.generic');
+Route::view('/pages/elements', 'bookmaster.elements')->name('pages.elements');
 
 // Modul A: Galeri Virtual (Katalog Karya Seni)
 Route::get('/artwork', [ArtworkController::class, 'index'])->name('gallery.index');
@@ -205,8 +216,11 @@ Route::get('/home', function () {
 
 // User dashboard (authenticated users)
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\LoanController as UserLoanController;
 
 Route::middleware('auth')->get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+Route::middleware('auth')->get('/user/loans', [UserLoanController::class, 'index'])->name('user.loans');
+Route::middleware('auth')->post('/user/loans', [UserLoanController::class, 'store'])->name('user.loans.store');
 
 // Profile routes (used by feature tests)
 Route::middleware('auth')->group(function () {

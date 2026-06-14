@@ -2,7 +2,7 @@
 @section('page-title', 'Tambah Koleksi')
 @section('content')
 <div class="card">
-    <div class="card-header"><h4>Form Tambah Koleksi Museum</h4></div>
+    <div class="card-header"><h4>Form Tambah Koleksi Perpustakaan</h4></div>
     <div class="card-body">
         <form action="{{ route('admin.collections.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

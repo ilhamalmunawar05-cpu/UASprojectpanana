@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('page-title', 'Manajemen Koleksi Museum')
+@section('page-title', 'Manajemen Koleksi Perpustakaan')
 @section('content')
 <div class="card">
     <div class="card-header d-flex justify-content-between">
-        <h4><i class="fas fa-archive"></i> Daftar Koleksi Museum</h4>
+        <h4><i class="fas fa-archive"></i> Daftar Koleksi Perpustakaan</h4>
         <a href="{{ route('admin.collections.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Tambah Koleksi
         </a>

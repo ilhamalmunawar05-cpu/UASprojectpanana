@@ -23,8 +23,8 @@
 ## Deskripsi Singkat
 Proyek ini adalah Sistem Informasi Galeri Seni Digital & Manajemen Pameran yang dibangun menggunakan Laravel (tema kelompok: Seni Rupa & Desain Kreatif). Sistem menyediakan:
 
-- Halaman Publik: menampilkan katalog karya seni, profil seniman, jadwal pameran, halaman lelang, artikel, koleksi museum, dan buku tamu.
-- Halaman Admin: panel CRUD untuk mengelola karya seni, seniman, pameran, lelang, artikel, komentar, dan koleksi museum.
+- Halaman Publik: menampilkan katalog karya seni, profil seniman, jadwal pameran, halaman lelang, artikel, koleksi perpustakaan, dan buku tamu.
+- Halaman Admin: panel CRUD untuk mengelola karya seni, seniman, pameran, lelang, artikel, komentar, dan koleksi perpustakaan.
 - Autentikasi dan Role-Based Access Control (Spatie Laravel Permission) dengan role `super-admin`, `staff-admin`, dan `public`.
 
 ---
@@ -37,7 +37,7 @@ Proyek ini adalah Sistem Informasi Galeri Seni Digital & Manajemen Pameran yang 
 4. Manajemen Lelang Karya — Frontend: Bidding Simulation / Backend: CRUD Auction
 5. Artikel Kritik & Ulasan Seni — Frontend: Blog / Backend: CRUD Article
 6. Buku Tamu & Komentar — Frontend: Wall of Comment / Backend: CRUD Comment
-7. Koleksi Museum / Arsip — Frontend: Museum Online / Backend: CRUD Collection
+7. Koleksi Perpustakaan / Arsip — Frontend: Perpustakaan Online / Backend: CRUD Collection
 
 > Catatan: Silakan susun pembagian tugas internal kelompok sesuai kesepakatan.
 
