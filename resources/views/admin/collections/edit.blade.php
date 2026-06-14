@@ -2,7 +2,7 @@
 @section('page-title', 'Edit Koleksi')
 @section('content')
 <div class="card">
-    <div class="card-header"><h4>Form Edit Koleksi Museum</h4></div>
+    <div class="card-header"><h4>Form Edit Koleksi Perpustakaan</h4></div>
     <div class="card-body">
         <form action="{{ route('admin.collections.update', $collection) }}" method="POST" enctype="multipart/form-data">
             @csrf @method('PUT')

@@ -47,7 +47,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="text-uppercase mb-1">Koleksi Museum</h6>
+                        <h6 class="text-uppercase mb-1">Koleksi Perpustakaan</h6>
                         <h2 class="mb-0">{{ $stats['collections'] }}</h2>
                     </div>
                     <i class="fas fa-archive fa-3x opacity-50"></i>
@@ -188,7 +188,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-archive"></i> Koleksi Museum</h5>
+                <h5 class="mb-0"><i class="fas fa-archive"></i> Koleksi Perpustakaan</h5>
             </div>
             <div class="card-body text-center">
                 <h1 class="display-4">{{ $stats['collections'] }}</h1>

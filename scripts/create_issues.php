@@ -4,8 +4,9 @@
  * Pastikan Anda sudah set GitHub token di environment variable
  * 
  * Cara menggunakan:
- * 1. Set GITHUB_TOKEN di environment: export GITHUB_TOKEN=your_token_here
- * 2. Jalankan: php scripts/create_issues.php
+ * 1. Buat Personal Access Token di https://github.com/settings/tokens
+ * 2. Set token dengan: $set GITHUB_TOKEN=ghp_xxxxx (Windows)
+ * 3. Jalankan: php scripts/create_issues.php
  */
 
 // Konfigurasi
@@ -13,10 +14,24 @@ $owner = 'ilhamalmunawar05-cpu';
 $repo = 'UASprojectpanana';
 $githubToken = getenv('GITHUB_TOKEN');
 
+// Cek di .env.local jika environment variable tidak tersedia
+if (!$githubToken && file_exists(__DIR__ . '/../.env.local')) {
+    $env = parse_ini_file(__DIR__ . '/../.env.local');
+    $githubToken = $env['GITHUB_TOKEN'] ?? null;
+}
+
 if (!$githubToken) {
     echo "❌ ERROR: GITHUB_TOKEN tidak ditemukan!\n";
-    echo "Cara set token:\n";
-    echo "  export GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx\n\n";
+    echo "\n📋 CARA MENGATASI:\n";
+    echo "1. Buka: https://github.com/settings/tokens\n";
+    echo "2. Click 'Generate new token (classic)'\n";
+    echo "3. Pilih scope: 'repo' (full control of private repositories)\n";
+    echo "4. Copy token yang dihasilkan\n";
+    echo "5. Set token dengan command:\n";
+    echo "   Windows (cmd):      set GITHUB_TOKEN=ghp_xxxxxxxxxxxxx\n";
+    echo "   Windows (PowerShell): \$env:GITHUB_TOKEN=\"ghp_xxxxxxxxxxxxx\"\n";
+    echo "   Linux/Mac:          export GITHUB_TOKEN=ghp_xxxxxxxxxxxxx\n";
+    echo "\n6. Jalankan ulang: php scripts/create_issues.php\n\n";
     exit(1);
 }
 
@@ -50,14 +65,17 @@ $issues = [
 ];
 
 // Function untuk membuat issue via GitHub API
+// GitHub PAT fine-grained tidak bisa create issues, gunakan Classic PAT
 function createGitHubIssue($owner, $repo, $title, $body, $labels, $token) {
     $url = "https://api.github.com/repos/$owner/$repo/issues";
     
     $data = [
         'title' => $title,
         'body' => $body,
-        'labels' => $labels,
     ];
+    
+    // Jangan tambah labels karena PAT fine-grained tidak support
+    // Labels akan ditambah secara terpisah setelah issue dibuat
     
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -68,8 +86,10 @@ function createGitHubIssue($owner, $repo, $title, $body, $labels, $token) {
         'Accept: application/vnd.github.v3+json',
         'User-Agent: UASprojectpanana',
         'Content-Type: application/json',
+        'X-GitHub-Api-Version: 2022-11-28',
     ]);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
     
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -79,30 +99,71 @@ function createGitHubIssue($owner, $repo, $title, $body, $labels, $token) {
     if ($error) {
         return [
             'success' => false,
-            'error' => $error,
+            'error' => "CURL Error: $error",
+            'http_code' => null,
         ];
     }
     
     $result = json_decode($response, true);
     
     if ($httpCode >= 200 && $httpCode < 300) {
+        $issueNumber = $result['number'] ?? null;
+        
+        // Coba tambah labels secara terpisah
+        $labelAdded = true;
+        if (!empty($labels)) {
+            $labelAdded = addIssueLables($owner, $repo, $issueNumber, $labels, $token);
+        }
+        
         return [
             'success' => true,
-            'issue_number' => $result['number'] ?? null,
+            'issue_number' => $issueNumber,
             'issue_url' => $result['html_url'] ?? null,
+            'labels_added' => $labelAdded,
         ];
     } else {
+        $errorMsg = $result['message'] ?? 'Unknown error';
+        if (isset($result['errors'])) {
+            $errorMsg .= ' | ' . json_encode($result['errors']);
+        }
         return [
             'success' => false,
-            'error' => $result['message'] ?? 'Unknown error',
+            'error' => $errorMsg,
             'http_code' => $httpCode,
         ];
     }
 }
 
+// Fungsi tambahan untuk add labels ke issue
+function addIssueLables($owner, $repo, $issueNumber, $labels, $token) {
+    $url = "https://api.github.com/repos/$owner/$repo/issues/$issueNumber/labels";
+    
+    $data = $labels;
+    
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: token ' . $token,
+        'Accept: application/vnd.github.v3+json',
+        'User-Agent: UASprojectpanana',
+        'Content-Type: application/json',
+        'X-GitHub-Api-Version: 2022-11-28',
+    ]);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    return ($httpCode >= 200 && $httpCode < 300);
+}
+
 // Main execution
 echo "🚀 Memulai pembuatan GitHub Issues...\n";
 echo "📦 Repository: $owner/$repo\n";
+echo "🔐 Token: " . substr($githubToken, 0, 10) . "..." . substr($githubToken, -10) . "\n";
 echo str_repeat("=", 60) . "\n\n";
 
 $successCount = 0;
@@ -121,11 +182,16 @@ foreach ($issues as $index => $issue) {
     );
     
     if ($result['success']) {
-        echo "  ✅ Berhasil! Issue #{$result['issue_number']}\n";
+        $labelStatus = isset($result['labels_added']) && !$result['labels_added'] ? ' (labels gagal ditambah)' : '';
+        echo "  ✅ Berhasil! Issue #{$result['issue_number']}{$labelStatus}\n";
         echo "  URL: {$result['issue_url']}\n\n";
         $successCount++;
     } else {
-        echo "  ❌ Gagal: {$result['error']}\n\n";
+        echo "  ❌ Gagal: {$result['error']}";
+        if (isset($result['http_code'])) {
+            echo " (HTTP {$result['http_code']})";
+        }
+        echo "\n\n";
         $failCount++;
     }
     
@@ -143,7 +209,12 @@ if ($successCount === count($issues)) {
     echo "🎉 Semua issues berhasil dibuat!\n";
 } else if ($successCount > 0) {
     echo "⚠️  Beberapa issues gagal dibuat.\n";
+    echo "💡 Terkadang label belum ada. Jalankan script setup dulu jika diperlukan.\n";
 } else {
     echo "❌ Semua issues gagal dibuat.\n";
+    echo "💡 Periksa:\n";
+    echo "   1. GITHUB_TOKEN valid dan punya permission 'repo'\n";
+    echo "   2. Repository benar: $owner/$repo\n";
+    echo "   3. Koneksi internet stabil\n";
 }
 ?>

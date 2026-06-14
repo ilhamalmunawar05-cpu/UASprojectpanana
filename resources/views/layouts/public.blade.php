@@ -68,7 +68,7 @@
                         <a class="nav-link {{ request()->is('articles*') ? 'active' : '' }}" href="{{ route('articles.public') }}">Artikel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('museum*') ? 'active' : '' }}" href="{{ route('museum.public') }}">Museum Online</a>
+                        <a class="nav-link {{ request()->is('museum*') ? 'active' : '' }}" href="{{ route('museum.public') }}">Perpustakaan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('guestbook*') ? 'active' : '' }}" href="{{ route('guestbook.public') }}">Buku Tamu</a>

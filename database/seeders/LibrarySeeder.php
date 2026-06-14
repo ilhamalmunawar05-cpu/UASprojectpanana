@@ -2,45 +2,42 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Category;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Member;
 use App\Models\User;
 use App\Models\Loan;
 use App\Models\EResource;
-use Carbon\Carbon;
 
 class LibrarySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Create Categories
         $categories = [
-            ['name' => 'Fiksi', 'description' => 'Novel dan buku cerita fiksi'],
-            ['name' => 'Non-Fiksi', 'description' => 'Buku pengetahuan dan fakta'],
-            ['name' => 'Referensi', 'description' => 'Buku-buku rujukan dan referensi'],
-            ['name' => 'Sains & Teknologi', 'description' => 'Buku tentang ilmu pengetahuan dan teknologi'],
-            ['name' => 'Bisnis & Ekonomi', 'description' => 'Buku tentang bisnis dan ekonomi'],
+            ['name' => 'Fiksi', 'description' => 'Novel dan buku cerita fiksi.'],
+            ['name' => 'Non-Fiksi', 'description' => 'Buku pengetahuan dan fakta.'],
+            ['name' => 'Referensi', 'description' => 'Buku-buku rujukan dan referensi.'],
+            ['name' => 'Sains & Teknologi', 'description' => 'Buku tentang ilmu pengetahuan dan teknologi.'],
+            ['name' => 'Bisnis & Ekonomi', 'description' => 'Buku tentang bisnis dan ekonomi.'],
         ];
 
+        $categoryMap = [];
         foreach ($categories as $category) {
-            Category::firstOrCreate($category);
+            $model = Category::firstOrCreate(['name' => $category['name']], ['description' => $category['description']]);
+            $categoryMap[$category['name']] = $model->id;
         }
 
-        // Create Books
         $books = [
             [
                 'title' => 'Harry Potter and the Philosopher\'s Stone',
                 'author' => 'J.K. Rowling',
                 'publisher' => 'Bloomsbury',
                 'year' => 1997,
-                'isbn' => '978-0747532699',
-                'category_id' => 1,
+                'isbn' => '9780747532699',
+                'category_id' => $categoryMap['Fiksi'],
                 'rack' => 'A1',
                 'stock' => 5,
             ],
@@ -49,8 +46,8 @@ class LibrarySeeder extends Seeder
                 'author' => 'J.R.R. Tolkien',
                 'publisher' => 'Allen & Unwin',
                 'year' => 1954,
-                'isbn' => '978-0544003415',
-                'category_id' => 1,
+                'isbn' => '9780544003415',
+                'category_id' => $categoryMap['Fiksi'],
                 'rack' => 'A2',
                 'stock' => 3,
             ],
@@ -59,8 +56,8 @@ class LibrarySeeder extends Seeder
                 'author' => 'Yuval Noah Harari',
                 'publisher' => 'Harper',
                 'year' => 2011,
-                'isbn' => '978-0062316097',
-                'category_id' => 2,
+                'isbn' => '9780062316097',
+                'category_id' => $categoryMap['Non-Fiksi'],
                 'rack' => 'B1',
                 'stock' => 4,
             ],
@@ -69,8 +66,8 @@ class LibrarySeeder extends Seeder
                 'author' => 'Jim Collins',
                 'publisher' => 'HarperBusiness',
                 'year' => 2001,
-                'isbn' => '978-0066620992',
-                'category_id' => 5,
+                'isbn' => '9780066620992',
+                'category_id' => $categoryMap['Bisnis & Ekonomi'],
                 'rack' => 'C1',
                 'stock' => 6,
             ],
@@ -79,8 +76,8 @@ class LibrarySeeder extends Seeder
                 'author' => 'Stephen Hawking',
                 'publisher' => 'Bantam',
                 'year' => 1988,
-                'isbn' => '978-0553380163',
-                'category_id' => 4,
+                'isbn' => '9780553380163',
+                'category_id' => $categoryMap['Sains & Teknologi'],
                 'rack' => 'D1',
                 'stock' => 2,
             ],
@@ -89,8 +86,8 @@ class LibrarySeeder extends Seeder
                 'author' => 'J.R.R. Tolkien',
                 'publisher' => 'Allen & Unwin',
                 'year' => 1937,
-                'isbn' => '978-0547928227',
-                'category_id' => 1,
+                'isbn' => '9780547928227',
+                'category_id' => $categoryMap['Fiksi'],
                 'rack' => 'A3',
                 'stock' => 7,
             ],
@@ -99,95 +96,104 @@ class LibrarySeeder extends Seeder
                 'author' => 'Daniel Kahneman',
                 'publisher' => 'Farrar, Straus and Giroux',
                 'year' => 2011,
-                'isbn' => '978-0374275631',
-                'category_id' => 2,
+                'isbn' => '9780374275631',
+                'category_id' => $categoryMap['Non-Fiksi'],
                 'rack' => 'B2',
                 'stock' => 3,
             ],
         ];
 
         foreach ($books as $book) {
-            Book::firstOrCreate(
-                ['isbn' => $book['isbn']],
-                $book
-            );
+            Book::firstOrCreate(['isbn' => $book['isbn']], $book);
         }
 
-        // Create Members (based on existing users)
-        $users = User::where('email', '!=', 'admin@gallery.com')->limit(5)->get();
-        
-        $departments = ['Sistem Informasi', 'Teknik Informatika', 'Manajemen', 'Akuntansi', 'Komunikasi'];
-        $counter = 1;
+        $publicRole = Role::firstOrCreate(['name' => 'public']);
+        $membersData = [
+            ['name' => 'Andi Pratama', 'email' => 'andi@example.com', 'department' => 'Sistem Informasi'],
+            ['name' => 'Budi Santoso', 'email' => 'budi@example.com', 'department' => 'Teknik Informatika'],
+            ['name' => 'Citra Dewi', 'email' => 'citra@example.com', 'department' => 'Manajemen'],
+            ['name' => 'Dewi Anggraeni', 'email' => 'dewi@example.com', 'department' => 'Akuntansi'],
+            ['name' => 'Eko Prasetyo', 'email' => 'eko@example.com', 'department' => 'Komunikasi'],
+        ];
 
-        foreach ($users as $user) {
+        foreach ($membersData as $index => $memberData) {
+            $user = User::firstOrCreate(
+                ['email' => $memberData['email']],
+                [
+                    'name' => $memberData['name'],
+                    'password' => Hash::make('password123'),
+                ]
+            );
+            $user->assignRole($publicRole);
+
             Member::firstOrCreate(
                 ['user_id' => $user->id],
                 [
-                    'nim_nidn' => '2024' . str_pad($counter, 5, '0', STR_PAD_LEFT),
+                    'nim_nidn' => '2024' . str_pad($index + 1, 5, '0', STR_PAD_LEFT),
                     'full_name' => $user->name,
-                    'phone' => '08' . str_pad(rand(100000000, 999999999), 9, '0', STR_PAD_LEFT),
-                    'address' => 'Jl. Kampus No. ' . $counter,
-                    'department' => $departments[$counter % 5],
+                    'phone' => '0850' . str_pad(rand(1000000, 9999999), 7, '0', STR_PAD_LEFT),
+                    'address' => 'Jl. Kampus No. ' . ($index + 1),
+                    'department' => $memberData['department'],
                     'status' => 'active',
-                    'joined_date' => now()->subMonths(rand(1, 12)),
+                    'joined_date' => now()->subMonths($index + 1),
                 ]
             );
-            $counter++;
         }
 
-        // Create Sample Loans
-        $members = Member::limit(3)->get();
-        $books = Book::where('stock', '>', 0)->limit(5)->get();
+        $members = Member::with('user')->limit(3)->get();
+        $availableBooks = Book::where('stock', '>', 0)->get();
 
         foreach ($members as $member) {
-            if ($books->count() > 0) {
-                $book = $books->random();
-                if ($book->stock > 0) {
-                    Loan::create([
+            if ($availableBooks->isEmpty()) {
+                break;
+            }
+
+            $book = $availableBooks->random();
+            if ($book->stock > 0) {
+                Loan::firstOrCreate(
+                    [
                         'member_id' => $member->id,
                         'book_id' => $book->id,
-                        'loan_date' => now()->subDays(30),
-                        'due_date' => now()->subDays(10),
+                        'loan_date' => now()->subDays(15),
+                    ],
+                    [
+                        'due_date' => now()->addDays(7),
                         'status' => 'active',
-                    ]);
-                    $book->decrement('stock');
-                }
+                    ]
+                );
+                $book->decrement('stock');
             }
         }
 
-        // Create E-Resources
         $eresources = [
             [
                 'title' => 'Introduction to Computer Science',
                 'type' => 'ebook',
                 'category' => 'Ilmu Komputer',
-                'description' => 'E-book pengenalan ilmu komputer untuk pemula',
+                'description' => 'E-book pengenalan ilmu komputer untuk pemula.',
                 'url' => 'https://example.com/cs-intro.pdf',
                 'uploaded_by' => 1,
             ],
             [
-                'title' => 'Journal of Modern Physics Vol. 5',
+                'title' => 'Jurnal Fisika Modern Vol. 5',
                 'type' => 'journal',
                 'category' => 'Fisika',
-                'description' => 'Jurnal ilmiah tentang perkembangan fisika modern',
+                'description' => 'Jurnal ilmiah tentang perkembangan fisika modern.',
                 'url' => 'https://example.com/physics-journal.pdf',
                 'uploaded_by' => 1,
             ],
             [
-                'title' => 'Digital Marketing Research Paper 2024',
+                'title' => 'Penelitian Pemasaran Digital 2024',
                 'type' => 'research_paper',
                 'category' => 'Pemasaran Digital',
-                'description' => 'Makalah penelitian terbaru tentang pemasaran digital',
+                'description' => 'Makalah penelitian terbaru tentang pemasaran digital.',
                 'url' => 'https://example.com/marketing-research.pdf',
                 'uploaded_by' => 1,
             ],
         ];
 
         foreach ($eresources as $resource) {
-            EResource::firstOrCreate(
-                ['title' => $resource['title']],
-                $resource
-            );
+            EResource::firstOrCreate(['title' => $resource['title']], $resource);
         }
 
         $this->command->info('Library seeder completed successfully!');
