@@ -52,7 +52,7 @@
                             <li class="menu-has-children">
                                 <a href="">Account</a>
                                 <ul>
-                                    <li><a href="{{ route('profile.show') }}">Profile</a></li>
+                                    <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}" 
                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
