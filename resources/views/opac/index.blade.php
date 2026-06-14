@@ -22,8 +22,8 @@
                             <div class="card h-100">
                                 <div class="row g-0">
                                     <div class="col-4">
-                                        <img src="{{ asset('bookmaster/img/book.jpg') }}" class="img-fluid rounded-start" alt="cover">
-                                    </div>
+                                        <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('bookmaster/img/book.jpg') }}" class="img-fluid rounded-start" alt="cover">
+                                    </div>"},{ 
                                     <div class="col-8">
                                         <div class="card-body">
                                             <h6 class="card-title">{{ $book->title }}</h6>

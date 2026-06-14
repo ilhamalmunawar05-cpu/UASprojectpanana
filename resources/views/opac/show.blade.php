@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ asset('bookmaster/img/book.jpg') }}" class="img-fluid mb-3" alt="cover">
+                                <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('bookmaster/img/book.jpg') }}" class="img-fluid mb-3" alt="cover">
                             </div>
                             <div class="col-md-8">
                                 <h3 class="mb-2">{{ $book->title }}</h3>
