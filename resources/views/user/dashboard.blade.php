@@ -74,7 +74,7 @@
                     </div>
                     <h5 class="card-title">Profil Saya</h5>
                     <p class="card-text text-muted">Kelola informasi pribadi dan data keanggotaan perpustakaan.</p>
-                    <a href="{{ Route::has('user.profile') ? route('user.profile') : (Route::has('profile.edit') ? route('profile.edit') : '#') }}" class="btn btn-info text-white">
+                    <a href="{{ route('user.member.edit') }}" class="btn btn-info text-white">
                         <i class="fas fa-arrow-right"></i> Edit Profil
                     </a>
                 </div>
@@ -164,7 +164,7 @@
                     </div>
                     <h5>Jadwal Layanan</h5>
                     <p class="text-muted">Informasi jadwal operasional perpustakaan dan layanan yang tersedia.</p>
-                    <a href="{{ Route::has('services.schedule') ? route('services.schedule') : '#' }}" class="btn btn-outline-success">
+                    <a href="{{ route('exhibitions.public') }}" class="btn btn-outline-success">
                         <i class="fas fa-arrow-right"></i> Lihat Jadwal
                     </a>
                 </div>
@@ -178,7 +178,7 @@
                     </div>
                     <h5>Bantuan & FAQ</h5>
                     <p class="text-muted">Temukan jawaban atas pertanyaan umum tentang layanan perpustakaan.</p>
-                    <a href="{{ Route::has('help.faq') ? route('help.faq') : '#' }}" class="btn btn-outline-info">
+                    <a href="{{ route('help.faq') }}" class="btn btn-outline-info">
                         <i class="fas fa-arrow-right"></i> Lihat FAQ
                     </a>
                 </div>

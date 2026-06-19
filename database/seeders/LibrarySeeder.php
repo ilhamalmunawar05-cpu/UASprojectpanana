@@ -40,6 +40,7 @@ class LibrarySeeder extends Seeder
                 'category_id' => $categoryMap['Fiksi'],
                 'rack' => 'A1',
                 'stock' => 5,
+                'image' => 'bookmaster/img/b1.jpg',
             ],
             [
                 'title' => 'The Lord of the Rings',
@@ -50,6 +51,7 @@ class LibrarySeeder extends Seeder
                 'category_id' => $categoryMap['Fiksi'],
                 'rack' => 'A2',
                 'stock' => 3,
+                'image' => 'bookmaster/img/b2.jpg',
             ],
             [
                 'title' => 'Sapiens: A Brief History of Humankind',
@@ -60,6 +62,7 @@ class LibrarySeeder extends Seeder
                 'category_id' => $categoryMap['Non-Fiksi'],
                 'rack' => 'B1',
                 'stock' => 4,
+                'image' => 'bookmaster/img/b3.jpg',
             ],
             [
                 'title' => 'Good to Great',
@@ -104,7 +107,7 @@ class LibrarySeeder extends Seeder
         ];
 
         foreach ($books as $book) {
-            Book::firstOrCreate(['isbn' => $book['isbn']], $book);
+            Book::updateOrCreate(['isbn' => $book['isbn']], $book);
         }
 
         $publicRole = Role::firstOrCreate(['name' => 'public']);

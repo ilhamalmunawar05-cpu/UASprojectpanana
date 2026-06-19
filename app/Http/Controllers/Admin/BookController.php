@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -37,7 +38,12 @@ class BookController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'rack' => 'nullable|string|max:100',
             'stock' => 'required|integer|min:0',
+            'image' => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('books', 'public');
+        }
 
         Book::create($validated);
 
@@ -61,7 +67,15 @@ class BookController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'rack' => 'nullable|string|max:100',
             'stock' => 'required|integer|min:0',
+            'image' => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            if ($book->image) {
+                Storage::disk('public')->delete($book->image);
+            }
+            $validated['image'] = $request->file('image')->store('books', 'public');
+        }
 
         $book->update($validated);
 

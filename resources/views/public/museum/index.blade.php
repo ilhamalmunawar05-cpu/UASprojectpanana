@@ -19,7 +19,7 @@
     <nav class="navbar navbar-light bg-white rounded shadow-sm mb-4">
         <div class="container">
             <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">
-                <i class="fas fa-palette"></i> Gallery Art Lelang
+                <i class="fas fa-book"></i> SIPERPUS
             </a>
             <div>
                 @auth

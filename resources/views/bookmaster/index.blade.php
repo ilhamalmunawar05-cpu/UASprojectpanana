@@ -130,7 +130,7 @@
                         karya seni, dan artefak museum.
                     </p>
                     <div class="price-bottom">
-                        <a href="#" class="primary-btn header-btn">Pelajari Lebih</a>
+                        <a href="{{ route('museum.public') }}" class="primary-btn header-btn">Pelajari Lebih</a>
                     </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                         jadwal, dan peserta.
                     </p>
                     <div class="price-bottom">
-                        <a href="#" class="primary-btn header-btn">Pelajari Lebih</a>
+                        <a href="{{ route('exhibitions.public') }}" class="primary-btn header-btn">Pelajari Lebih</a>
                     </div>
                 </div>
             </div>
@@ -158,10 +158,10 @@
                         dan pameran secara online.
                     </p>
                     <div class="price-bottom">
-                        <a href="#" class="primary-btn">Jelajahi</a>
+                        <a href="{{ route('home') }}" class="primary-btn">Jelajahi</a>
                     </div>
-                </div>				
-            </div>								
+                </div>
+            </div>
         </div>
     </div>	
 </section>

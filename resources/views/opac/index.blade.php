@@ -32,11 +32,19 @@
                                             <p class="mb-2"><small class="text-" style="color:#6c757d">Kategori: {{ $book->category->name ?? '-' }}</small></p>
                                             <div class="d-flex gap-2">
                                                 <a href="{{ route('opac.show', $book->id) }}" class="btn btn-outline-primary btn-sm">Lihat Detail</a>
-                                                @if(Route::has('user.loans'))
-                                                    <a href="{{ route('user.loans') }}?book={{ $book->id }}" class="btn btn-sm btn-success">Pinjam</a>
+                                                @auth
+                                                    @if(auth()->user()->member)
+                                                        @if($book->stock > 0)
+                                                            <a href="{{ route('user.loans') }}?book={{ $book->id }}" class="btn btn-sm btn-success">Pinjam</a>
+                                                        @else
+                                                            <button class="btn btn-sm btn-secondary" disabled>Tidak tersedia</button>
+                                                        @endif
+                                                    @else
+                                                        <a href="{{ route('user.member.edit') }}" class="btn btn-sm btn-warning">Lengkapi Profil</a>
+                                                    @endif
                                                 @else
-                                                    <button class="btn btn-sm btn-secondary" disabled>{{ $book->stock > 0 ? 'Tersedia' : 'Kosong' }}</button>
-                                                @endif
+                                                    <a href="{{ route('login', ['redirect' => route('user.loans') . '?book=' . $book->id]) }}" class="btn btn-sm btn-outline-primary">Login untuk Pinjam</a>
+                                                @endauth
                                             </div>
                                         </div>
                                     </div>

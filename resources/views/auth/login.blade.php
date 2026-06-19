@@ -21,6 +21,9 @@
 
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
+                            @if(old('redirect', request()->query('redirect')))
+                                <input type="hidden" name="redirect" value="{{ old('redirect', request()->query('redirect')) }}">
+                            @endif
 
                             <div class="form-group mb-3">
                                 <label for="email">Email</label>

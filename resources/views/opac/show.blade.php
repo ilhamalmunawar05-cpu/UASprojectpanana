@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ $book->image ? asset('storage/' . $book->image) : asset('bookmaster/img/book.jpg') }}" class="img-fluid mb-3" alt="cover">
+                                <img src="{{ $book->image_url }}" class="img-fluid mb-3" alt="cover">
                             </div>
                             <div class="col-md-8">
                                 <h3 class="mb-2">{{ $book->title }}</h3>
@@ -31,13 +31,17 @@
 
                                 <div class="mt-3 d-flex gap-2">
                                     @auth
-                                        @if(Route::has('user.loans'))
-                                            <a href="{{ route('user.loans') }}?book={{ $book->id }}" class="btn btn-primary">Pinjam</a>
+                                        @if(auth()->user()->member)
+                                            @if($book->stock > 0)
+                                                <a href="{{ route('user.loans') }}?book={{ $book->id }}" class="btn btn-primary">Pinjam</a>
+                                            @else
+                                                <button class="btn btn-primary" disabled>Tidak tersedia</button>
+                                            @endif
                                         @else
-                                            <button class="btn btn-primary" disabled>Pinjam</button>
+                                            <a href="{{ route('user.member.edit') }}" class="btn btn-warning">Lengkapi Profil</a>
                                         @endif
                                     @else
-                                        <a href="{{ route('login') }}" class="btn btn-outline-primary">Login untuk meminjam</a>
+                                        <a href="{{ route('login', ['redirect' => route('user.loans') . '?book=' . $book->id]) }}" class="btn btn-outline-primary">Login untuk meminjam</a>
                                     @endauth
 
                                     <a href="{{ route('opac.index') }}" class="btn btn-outline-secondary">Kembali ke hasil</a>

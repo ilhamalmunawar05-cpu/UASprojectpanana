@@ -21,6 +21,8 @@ use App\Http\Controllers\Public\ArticleController;
 use App\Http\Controllers\Public\GuestbookController;
 use App\Http\Controllers\Public\MuseumController;
 use App\Http\Controllers\Public\OpacController;
+use App\Http\Controllers\Public\EResourceController;
+use App\Http\Controllers\Public\HelpController;
 
 // ============================================================================
 // IMPORT CONTROLLERS - ADMIN
@@ -55,6 +57,12 @@ Route::get('/opac', [OpacController::class, 'index'])->name('opac.index');
 
 // OPAC detail
 Route::get('/opac/{book}', [OpacController::class, 'show'])->name('opac.show');
+
+// Public E-Resources
+Route::get('/eresources', [EResourceController::class, 'index'])->name('eresources.public');
+
+// Public Help / FAQ
+Route::get('/help/faq', [HelpController::class, 'faq'])->name('help.faq');
 
 // Static Bookmaster Pages
 Route::view('/pages/generic', 'bookmaster.generic')->name('pages.generic');
@@ -217,10 +225,13 @@ Route::get('/home', function () {
 // User dashboard (authenticated users)
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\LoanController as UserLoanController;
+use App\Http\Controllers\User\MemberController as UserMemberController;
 
 Route::middleware('auth')->get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 Route::middleware('auth')->get('/user/loans', [UserLoanController::class, 'index'])->name('user.loans');
 Route::middleware('auth')->post('/user/loans', [UserLoanController::class, 'store'])->name('user.loans.store');
+Route::middleware('auth')->get('/user/member', [UserMemberController::class, 'edit'])->name('user.member.edit');
+Route::middleware('auth')->patch('/user/member', [UserMemberController::class, 'update'])->name('user.member.update');
 
 // Profile routes (used by feature tests)
 Route::middleware('auth')->group(function () {

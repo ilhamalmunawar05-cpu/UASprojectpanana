@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Gallery Art Lelang</title>
+    <title>Register - SIPERPUS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -108,12 +108,12 @@
     @include('partials.back-button')
     <div class="register-container">
         <div class="logo-area">
-            <i class="fas fa-palette"></i>
+            <i class="fas fa-book"></i>
         </div>
 
         <div class="register-header">
             <h1>Daftar</h1>
-            <p>Bergabunglah dengan komunitas pecinta seni kami</p>
+            <p>Bergabunglah dengan komunitas pengguna SIPERPUS.</p>
         </div>
 
         <form action="{{ route('register') }}" method="POST">

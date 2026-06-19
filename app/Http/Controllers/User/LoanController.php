@@ -18,7 +18,9 @@ class LoanController extends Controller
         $member = $user->member ?? Member::where('user_id', $user->id)->first();
 
         if (! $member) {
-            return redirect()->route('profile.edit')
+            $bookId = $request->query('book');
+            $redirectUrl = route('user.member.edit') . ($bookId ? '?book=' . $bookId : '');
+            return redirect()->to($redirectUrl)
                 ->with('error', 'Profil anggota tidak ditemukan. Silakan lengkapi data anggota terlebih dahulu.');
         }
 
@@ -38,7 +40,9 @@ class LoanController extends Controller
         $member = $user->member ?? Member::where('user_id', $user->id)->first();
 
         if (! $member) {
-            return redirect()->route('profile.edit')
+            $bookId = $request->query('book');
+            $redirectUrl = route('user.member.edit') . ($bookId ? '?book=' . $bookId : '');
+            return redirect()->to($redirectUrl)
                 ->with('error', 'Profil anggota tidak ditemukan. Silakan lengkapi data anggota terlebih dahulu.');
         }
 

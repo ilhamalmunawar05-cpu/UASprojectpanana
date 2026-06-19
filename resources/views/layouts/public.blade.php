@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }} - @yield('title', 'Galeri Seni Digital')</title>
+    <title>{{ config('app.name') }} - @yield('title', 'SIPERPUS')</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-palette text-primary"></i> <strong>Galeri Seni</strong>
+                <i class="fas fa-book text-primary"></i> <strong>SIPERPUS</strong>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,7 @@
                         <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('gallery') ? 'active' : '' }}" href="{{ route('gallery.index') }}">Galeri Virtual</a>
+                        <a class="nav-link {{ request()->is('artwork*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">Katalog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('artists*') ? 'active' : '' }}" href="{{ route('artists.public') }}">Seniman</a>
@@ -130,13 +130,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5><i class="fas fa-palette"></i> Galeri Seni Digital</h5>
-                    <p class="text-muted">Platform manajemen dan galeri seni digital terpadu untuk seniman, kurator, dan pecinta seni.</p>
+                    <h5><i class="fas fa-book"></i> SIPERPUS</h5>
+                    <p class="text-muted">Platform informasi perpustakaan dan koleksi digital terpadu untuk anggota, staf, dan masyarakat umum.</p>
                 </div>
                 <div class="col-md-4 mb-3">
                     <h6>Link Cepat</h6>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('gallery.index') }}" class="text-muted text-decoration-none">Galeri Virtual</a></li>
+                        <li><a href="{{ route('gallery.index') }}" class="text-muted text-decoration-none">Katalog</a></li>
                         <li><a href="{{ route('artists.public') }}" class="text-muted text-decoration-none">Seniman</a></li>
                         <li><a href="{{ route('exhibitions.public') }}" class="text-muted text-decoration-none">Pameran</a></li>
                         <li><a href="{{ route('auctions.public') }}" class="text-muted text-decoration-none">Lelang</a></li>
@@ -144,8 +144,8 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <h6>Kontak</h6>
-                    <p class="text-muted mb-1"><i class="fas fa-envelope"></i> info@galleriseni.com</p>
-                    <p class="text-muted mb-1"><i class="fas fa-phone"></i> +62 123 4567 890</p>
+                    <p class="text-muted mb-1"><i class="fas fa-envelope"></i> info@siperpus.id</p>
+                    <p class="text-muted mb-1"><i class="fas fa-phone"></i> +62 811 0000 000</p>
                     <div class="mt-2">
                         <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
                         <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
@@ -154,7 +154,7 @@
                 </div>
             </div>
             <hr class="bg-secondary">
-            <p class="text-center text-muted mb-0">&copy; {{ date('Y') }} Galeri Seni Digital. All rights reserved.</p>
+            <p class="text-center text-muted mb-0">&copy; {{ date('Y') }} SIPERPUS - Sistem Informasi Perpustakaan. All rights reserved.</p>
         </div>
     </footer>
 

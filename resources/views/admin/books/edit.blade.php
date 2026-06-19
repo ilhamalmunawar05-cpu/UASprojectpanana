@@ -8,7 +8,7 @@
         <h4><i class="fas fa-edit"></i> Edit Buku</h4>
     </div>
     <div class="card-body">
-        <form action="{{ route('admin.books.update', $book) }}" method="POST" novalidate>
+        <form action="{{ route('admin.books.update', $book) }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             @method('PUT')
             <div class="row g-3">
@@ -56,6 +56,17 @@
                     <label class="form-label">Rak</label>
                     <input type="text" name="rack" value="{{ old('rack', $book->rack) }}" class="form-control @error('rack') is-invalid @enderror">
                     @error('rack')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Gambar Sampul</label>
+                    @if($book->image)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $book->image) }}" class="img-thumbnail" style="max-height: 180px;" alt="Cover">
+                        </div>
+                    @endif
+                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" accept="image/*">
+                    <small class="text-muted">Biarkan kosong jika tidak ingin mengubah.</small>
+                    @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
             </div>
 

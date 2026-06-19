@@ -8,7 +8,7 @@
         <h4><i class="fas fa-plus-circle"></i> Tambah Buku Baru</h4>
     </div>
     <div class="card-body">
-        <form action="{{ route('admin.books.store') }}" method="POST" novalidate>
+        <form action="{{ route('admin.books.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="row g-3">
                 <div class="col-md-6">
@@ -55,6 +55,11 @@
                     <label class="form-label">Rak</label>
                     <input type="text" name="rack" value="{{ old('rack') }}" class="form-control @error('rack') is-invalid @enderror" placeholder="Contoh: A1">
                     @error('rack')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Gambar Sampul</label>
+                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" accept="image/*">
+                    @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
             </div>
 
