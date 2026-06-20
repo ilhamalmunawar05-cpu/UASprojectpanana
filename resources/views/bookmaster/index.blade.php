@@ -17,11 +17,7 @@
                     Sistem Informasi Perpustakaan dan Museum - Kelompok 6 <br> 
                     Manajemen data koleksi, pameran, dan akses digital yang terintegrasi.
                 </p>
-                @auth
-                    <a href="{{ route('dashboard') }}" class="primary-btn text-uppercase">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="primary-btn text-uppercase">Masuk Sekarang</a>
-                @endauth
+                <a href="{{ route('dashboard') }}" class="primary-btn text-uppercase">Dashboard</a>
             </div>
             <div class="col-lg-5 banner-right">
                 <img class="img-fluid" src="{{ asset('bookmaster/img/header-img.png') }}" alt="SIPERPUS">

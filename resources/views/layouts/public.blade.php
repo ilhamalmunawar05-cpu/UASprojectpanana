@@ -16,11 +16,73 @@
         }
         .navbar {
             box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+        .navbar-nav {
+            align-items: center;
+        }
+        .navbar-nav .nav-item + .nav-item {
+            margin-left: .75rem;
+        }
+        .navbar-nav .nav-link {
+            padding: .5rem .85rem;
+            border-radius: .375rem;
+            transition: color .15s ease, background-color .15s ease;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #f45622;
+        }
+        .navbar-nav .dropdown-menu {
+            min-width: 12rem;
         }
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 80px 0;
+        }
+        .hero .stats-card {
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.18);
+            min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            border-radius: 20px;
+        }
+        .hero .stats-card small {
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            opacity: .8;
+        }
+        .hero .stats-card h3 {
+            font-size: 2rem;
+            margin-top: .75rem;
+            font-weight: 700;
+        }
+        .widget-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,.08);
+        }
+        .widget-icon {
+            width: 70px;
+            height: 70px;
+            font-size: 1.5rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: .02em;
         }
         .card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -50,28 +112,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('artwork*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">Katalog</a>
+                        <a class="nav-link {{ request()->routeIs('opac.index') ? 'active' : '' }}" href="{{ route('opac.index') }}">OPAC</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('artists*') ? 'active' : '' }}" href="{{ route('artists.public') }}">Seniman</a>
+                        <a class="nav-link {{ request()->routeIs('museum.public') ? 'active' : '' }}" href="{{ route('museum.public') }}">Koleksi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('exhibitions*') ? 'active' : '' }}" href="{{ route('exhibitions.public') }}">Pameran</a>
+                        <a class="nav-link {{ request()->routeIs('eresources.public') ? 'active' : '' }}" href="{{ route('eresources.public') }}">E-Resources</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('auctions*') ? 'active' : '' }}" href="{{ route('auctions.public') }}">Lelang</a>
+                        <a class="nav-link {{ request()->routeIs('help.faq') ? 'active' : '' }}" href="{{ route('help.faq') }}">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('articles*') ? 'active' : '' }}" href="{{ route('articles.public') }}">Artikel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('museum*') ? 'active' : '' }}" href="{{ route('museum.public') }}">Perpustakaan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('guestbook*') ? 'active' : '' }}" href="{{ route('guestbook.public') }}">Buku Tamu</a>
+                        <a class="nav-link {{ request()->routeIs('guestbook.public') ? 'active' : '' }}" href="{{ route('guestbook.public') }}">Buku Tamu</a>
                     </li>
                     @auth
                         <li class="nav-item dropdown">
