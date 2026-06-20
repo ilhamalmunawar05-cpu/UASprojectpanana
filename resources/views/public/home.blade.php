@@ -7,31 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    @include('partials.back-button')
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">SIPERPUS</a>
-            <div class="navbar-nav ms-auto">
-                @auth
-                    <span class="nav-link text-white">Halo, {{ optional(auth()->user())->name }}</span>
-                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-sm btn-outline-light">Logout</button>
-                    </form>
-                @else
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                @endauth
-            </div>
-        </div>
-    </nav>
-
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <h1>Selamat Datang di SIPERPUS</h1>
                 <p class="lead">Sistem Informasi Perpustakaan Modern untuk Mahasiswa dan Dosen</p>
-                
+
                 @auth
                     <p>Anda login sebagai: <strong>{{ optional(auth()->user())->name }}</strong></p>
                     <p>Role: <strong>{{ auth()->user()->getRoleNames()->first() ?? 'user' }}</strong></p>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ca99199b92bbbf9f3208bd0679ecc7e",
+    "content-hash": "1b7134e1a91f559cc74ce9daab784238",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -8286,6 +8286,86 @@
             "time": "2025-02-21T14:31:39+00:00"
         },
         {
+            "name": "spatie/laravel-blade-comments",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-blade-comments.git",
+                "reference": "68d04925e1406e45f87fdb0488a7200d0032f46e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-blade-comments/zipball/68d04925e1406e45f87fdb0488a7200d0032f46e",
+                "reference": "68d04925e1406e45f87fdb0488a7200d0032f46e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10|^11.0|^12.0|^13.0",
+                "illuminate/view": "^10|^11.0|^12.0|^13.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.19",
+                "stillat/blade-parser": "^2.0",
+                "symfony/filesystem": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.21",
+                "livewire/livewire": "^3.5.20|^4.0",
+                "nunomaduro/collision": "^7|^8.6.1",
+                "orchestra/testbench": "^8.5.4|^9.11|^10.0|^11.0",
+                "pestphp/pest": "^2.6.1|^3.7.4",
+                "pestphp/pest-plugin-arch": "^2.1.2|^3.0",
+                "pestphp/pest-plugin-laravel": "^2.0|^3.1",
+                "spatie/laravel-ray": "^1.39.1",
+                "spatie/pest-plugin-snapshots": "^2.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\BladeComments\\BladeCommentsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\BladeComments\\": "src/",
+                    "Spatie\\BladeComments\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Van Dijck",
+                    "email": "tim@spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add debug comments to your rendered output",
+            "homepage": "https://github.com/spatie/laravel-blade-comments",
+            "keywords": [
+                "blade",
+                "comments",
+                "debug",
+                "laravel",
+                "laravel-blade-comments",
+                "spatie",
+                "view"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-blade-comments/issues",
+                "source": "https://github.com/spatie/laravel-blade-comments/tree/2.0.3"
+            },
+            "time": "2026-04-29T07:21:21+00:00"
+        },
+        {
             "name": "spatie/laravel-ignition",
             "version": "2.9.1",
             "source": {
@@ -8375,6 +8455,193 @@
                 }
             ],
             "time": "2025-02-20T13:13:55+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.93.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "d5552849801f2642aea710557463234b59ef65eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/d5552849801f2642aea710557463234b59ef65eb",
+                "reference": "d5552849801f2642aea710557463234b59ef65eb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0|^11.0|^12.0|^13.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^8.0|^9.2|^10.0|^11.0",
+                "pestphp/pest": "^2.1|^3.1|^4.0",
+                "phpunit/php-code-coverage": "^10.0|^11.0|^12.0",
+                "phpunit/phpunit": "^10.5|^11.5|^12.5",
+                "spatie/pest-plugin-test-time": "^2.2|^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.93.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-05-19T14:06:37+00:00"
+        },
+        {
+            "name": "stillat/blade-parser",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Stillat/blade-parser.git",
+                "reference": "23a962f99bca451f8738ed2475a70129fb33f07c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Stillat/blade-parser/zipball/23a962f99bca451f8738ed2475a70129fb33f07c",
+                "reference": "23a962f99bca451f8738ed2475a70129fb33f07c",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+                "php": "^8.2.0"
+            },
+            "require-dev": {
+                "brianium/paratest": "*",
+                "laravel/pint": "^1.4",
+                "mockery/mockery": ">=1.3.3",
+                "orchestra/testbench": "^8.14 || ^9.2 || ^10.0 || ^11.0",
+                "pestphp/pest": "^3.7.3 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Stillat\\BladeParser\\ServiceProvider",
+                        "Stillat\\BladeParser\\Providers\\ValidatorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stillat\\BladeParser\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/Stillat/blade-parser/issues",
+                "source": "https://github.com/Stillat/blade-parser/tree/v2.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/johnathonkoster",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-02-26T17:21:13+00:00"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v8.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "99aec13b82b4967ec5088222c4a3ecca955949c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/99aec13b82b4967ec5088222c4a3ecca955949c2",
+                "reference": "99aec13b82b4967ec5088222c4a3ecca955949c2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4.1",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-mbstring": "~1.8"
+            },
+            "require-dev": {
+                "symfony/process": "^7.4|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides basic utilities for the filesystem",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/filesystem/tree/v8.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-29T05:06:50+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -8505,12 +8772,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
