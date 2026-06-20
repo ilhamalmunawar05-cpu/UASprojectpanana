@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
+<>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIPERPUS - Sistem Informasi Perpustakaan</title>
@@ -115,39 +115,6 @@
             color: rgba(255,255,255,0.8);
         }
     </style>
-</head>
-<body>
-    @include('partials.back-button')
-
-    <nav class="navbar navbar-expand-lg navbar-dark py-3">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <i class="fas fa-book-bookmark"></i> SIPERPUS
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('home') }}">Beranda</a></li>
-                    <li class="nav-item me-3"><a class="nav-link text-white" href="#">OPAC</a></li>
-                    <li class="nav-item me-3"><a class="nav-link text-white" href="#">Sirkulasi</a></li>
-                    <li class="nav-item me-3"><a class="nav-link text-white" href="#">E-Resources</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Laporan</a></li>
-                    @auth
-                        <li class="nav-item ms-3">
-                            <a class="btn btn-outline-light btn-sm" href="{{ route('dashboard') }}">Dashboard</a>
-                        </li>
-                    @else
-                        <li class="nav-item ms-3">
-                            <a class="btn btn-outline-light btn-sm" href="{{ route('login') }}">Login</a>
-                        </li>
-                    @endauth
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div class="container my-5">
         <div class="hero px-4 py-5">
             <div class="row align-items-center">
